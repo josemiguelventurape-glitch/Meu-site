@@ -19,8 +19,8 @@ from django.urls import path
 from paginas import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/',admin.site.urls),
     path('', views.Wiki),
-    path('About/', views.About),
-    path('Contact/', views.Contact),
+    path('About/',views.About),
+    path('Contact/',views.Contact),
 ]

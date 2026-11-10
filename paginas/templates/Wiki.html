@@ -1,0 +1,16 @@
+{% extends "Base.html" %}
+
+{% block content %}
+     <H1> Calling All Villains - Wiki </H1>
+     <p> Welcome : {{Name}} </p>
+     <p> City: {{City}} </p>
+     <p> Your Age: {{Age}} </p> 
+     <p> Your Height {{Height}} </p>
+     <h3> Your Title:</h3>
+     <ul>
+         {% for item in Title %}
+         <li> {{item}} </li>
+         {% endfor %}
+     </ul>
+{% endblock %}
+</html>

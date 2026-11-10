@@ -5,22 +5,15 @@ from django.http import HttpResponse
 def Wiki(request):
     dados = {
         "Name":"Mr. Puzzles",
+        "City":"Villains Planet",
         "Age": 21,
         "Height": 1.80,
-        "Courses": ["Villain","Super Villain","Vilão","SMG4"]
+        "Title": ["TV Boy", "Mr. P", "Boxhead", "TV Guy", "Shakespeare"]
     }
-    return render(request, "inicio.html", dados)
+    return render(request, "Wiki.html", dados)
 
 def About(request):
-    return HttpResponse("<a href='/'>Wiki</a> | "
-                        "<a href='/Contact/'>Contato</a> | "
-                        "<a href='/About/'>Sobre</a>"
-                        "<h1>Sobre Mim</h1>"
-                        "<p>teste</p>")
+    return render(request, "About.html")
 
 def Contact(request):
-    return HttpResponse("<a href='/'>Wiki</a> | "
-                        "<a href='/Contact/'>Contato</a> | "
-                        "<a href='/About/'>Sobre</a>"
-                        "<h1>Contato</h1>"
-                        "<p>teste</p>")
+    return render(request, "Contact.html")
