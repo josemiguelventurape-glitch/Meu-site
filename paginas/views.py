@@ -17,3 +17,6 @@ def About(request):
 
 def Contact(request):
     return render(request, "Contact.html")
+
+def Project(request):
+    return render(request, "Project.html")

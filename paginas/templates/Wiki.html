@@ -1,7 +1,7 @@
 {% extends "Base.html" %}
 
 {% block content %}
-     <H1> Calling All Villains - Wiki </H1>
+     <h2> Wiki </h2>
      <p> Welcome : {{Name}} </p>
      <p> City: {{City}} </p>
      <p> Your Age: {{Age}} </p> 
@@ -9,7 +9,7 @@
      <h3> Your Title:</h3>
      <ul>
          {% for item in Title %}
-         <li> {{item}} </li>
+         <li class="card"> {{item}} </li>
          {% endfor %}
      </ul>
 {% endblock %}

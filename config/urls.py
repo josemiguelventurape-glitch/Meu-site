@@ -23,4 +23,5 @@ urlpatterns = [
     path('', views.Wiki),
     path('About/',views.About),
     path('Contact/',views.Contact),
+    path('Project/',views.Project),
 ]

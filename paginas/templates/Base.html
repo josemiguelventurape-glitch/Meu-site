@@ -1,17 +1,20 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calling All Villains</title>
+    <link rel="stylesheet" href="{% static 'css\style.css' %}">
 </head>
 <body>
     <header>
      <nav>
-         <a href="/">Wiki</a> |
-         <a href="/Contact/">Contato</a> |
-         <a href="/About/">Sobre</a>
-         <p>----------------------------------------------------------------------------------------------------------------------<p>
+        <h1>Calling All Villains</h1>
+         <a class="card2" href="/">Wiki</a>
+         <a class="card2" href="/Contact/">Contato</a>
+         <a class="card2" href="/About/">Sobre</a>
+         <a class="card2" href="/Project/">Projetos</a>
     </nav>
     </header>
     <main>
@@ -19,7 +22,6 @@
         {% endblock %}
     </main>
     <footer> 
-        <p>----------------------------------------------------------------------------------------------------------------------<p>
         <p>Made by: Ventz (Direitos reservados por ZamAnimation) </p>
     </footer>
 </html>

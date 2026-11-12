@@ -1,0 +1,46 @@
+/* cabeçalho */
+body {
+    font-family: Arial; 
+    margin: 0; 
+    padding: 3px; 
+    background-color: white; 
+}
+/* corpo do site */
+header {
+    color: #bb7fb7; 
+    padding: 1rem; 
+    text-align: center; 
+    border:#c82074 3px solid;
+    background-color: #381e5c; 
+}
+/* navegação do menu */
+nav a {
+    color: white;
+    text-decoration: underline;
+}
+/* rodapé */
+footer {
+    color: #bb7fb7; 
+    padding: 1rem; 
+    text-align: center; 
+    border:#c82074 3px solid;
+    background-color: #381e5c; 
+}
+/* Botão de Menu */
+.card {
+    list-style: none;
+    border: 1px solid #6e5b5b;
+    border-radius: 7px;
+    padding: 10px;
+    margin-bottom: 4px;
+    background-color: #e0d8f0;
+}
+/* Itens for */
+.card2 {
+    list-style: none;
+    border: 1px solid #5c4b4b;
+    border-radius: 7px;
+    padding: 10px;
+    margin-right: 4px;
+    background-color: #c82074;
+}
