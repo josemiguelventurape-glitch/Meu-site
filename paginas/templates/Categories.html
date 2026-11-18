@@ -1,0 +1,19 @@
+{% extends "Base.html" %}
+
+{% block content %}
+  <h2>Categorias</h2>
+
+  {% regroup Categories by Categoria as grupos %}
+
+  {% for grupo in grupos %}
+    <h3>{{ grupo.grouper|default:"Sem categoria" }}</h3>
+    <ul>
+      {% for item in grupo.list %}
+        <li class="card2">
+          <strong>{{ item.Titulo }}</strong> ({{ item.Ano }})<br>
+          Estúdio: {{ item.Estudio }} | Gênero: {{ item.Genero }} | Nota: {{ item.IMDb }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+{% endblock %}
