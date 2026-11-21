@@ -25,5 +25,7 @@ urlpatterns = [
     path('Contact/', views.Contact),
     path('Project/', views.Project),
     path('Categories/', views.Categories),
+    path('New_Tabela/', views.New_Tabela),
+    path('New_Categories/', views.New_Categories),
 ]
 

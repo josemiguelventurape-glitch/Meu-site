@@ -1,7 +1,8 @@
-from django.shortcuts import render
-
-from django.http import HttpResponse
 from .models import Tabela, Category
+from django.shortcuts import redirect, render
+from django.http import HttpResponse
+from paginas.forms import TabelaForm, CategoryForm
+
 
 def Wiki(request):
     dados = {
@@ -30,7 +31,29 @@ def Project(request):
     return render(request, "Project.html", projetos)
 
 def Categories(request):
-    Categories = {
-         "Categories": Tabela.objects.all(),
+    dados = {
+        "Categories": Tabela.objects.select_related("Categoria").order_by("Categoria", "Titulo"),
     }
-    return render(request, "Categories.html", Categories)
+    return render(request, "Categories.html", dados)
+
+def New_Tabela(request):
+    if request.method == "POST":
+        form = TabelaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("/New_Tabela/")
+    else:
+        form = TabelaForm()
+    return render(request, "New_Tabela.html",
+                  {"form": form})
+
+def New_Categories(request):
+    if request.method == "POST":
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("/New_Categories/")
+    else:
+        form = CategoryForm()
+    return render(request, "New_Categories.html",
+                  {"form": form})

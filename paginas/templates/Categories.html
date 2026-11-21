@@ -3,6 +3,8 @@
 {% block content %}
   <h2>Categorias</h2>
 
+  <a href="/New_Categories/">+ New Category</a>
+
   {% regroup Categories by Categoria as grupos %}
 
   {% for grupo in grupos %}
@@ -15,5 +17,7 @@
         </li>
       {% endfor %}
     </ul>
+  {% empty %}
+    <p>Nenhum item cadastrado.</p>
   {% endfor %}
 {% endblock %}
