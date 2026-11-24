@@ -54,7 +54,7 @@ def Detail_Project(request, id):
         form = TabelaForm(request.POST, instance=projeto)
         if form.is_valid():
             form.save()
-            return redirect("Categories")
+            return redirect("Project")
     else:
         form = TabelaForm(instance=projeto)
     return render(request, "Detail_Project.html", {"form": form, "Projects": projeto})
@@ -65,7 +65,7 @@ def Edit_Tabela(request, id):
         form = TabelaForm(request.POST, instance=projeto)
         if form.is_valid():
             form.save()
-            return redirect("Categories")
+            return redirect("Project")
     else:
         form = TabelaForm(instance=projeto)
     return render(request, "Edit_Tabela.html", {"form": form, "Projects": projeto})
@@ -74,5 +74,5 @@ def Delete_Tabela(request, id):
     projeto = get_object_or_404(Tabela, id=id)
     if request.method == "POST":
         projeto.delete()
-        return redirect("Categories")
+        return redirect("Project")
     return render(request, "Delete_Tabela.html", {"Projects": projeto})
