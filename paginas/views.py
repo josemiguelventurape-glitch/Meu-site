@@ -1,5 +1,5 @@
 from .models import Tabela, Category
-from django.shortcuts import redirect, render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from paginas.forms import TabelaForm, CategoryForm
 
@@ -19,10 +19,6 @@ def About(request):
 
 def Contact(request):
     return render(request, "Contact.html")
-
-def Project(request):
-
-    return render(request, "Project.html")
 
 def Project(request):
     projetos = {
@@ -57,3 +53,32 @@ def New_Categories(request):
         form = CategoryForm()
     return render(request, "New_Categories.html",
                   {"form": form})
+
+def Detail_Project(request, id):
+    projeto = get_object_or_404(Tabela, id=id)
+    if request.method == "POST":
+        form = TabelaForm(request.POST, instance=projeto)
+        if form.is_valid():
+            form.save()
+            return redirect("Categories")
+    else:
+        form = TabelaForm(instance=projeto)
+    return render(request, "Detail_Project.html", {"form": form, "Projects": projeto})
+
+def Edit_Tabela(request, id):
+    projeto = get_object_or_404(Tabela, id=id)
+    if request.method == "POST":
+        form = TabelaForm(request.POST, instance=projeto)
+        if form.is_valid():
+            form.save()
+            return redirect("Categories")
+    else:
+        form = TabelaForm(instance=projeto)
+    return render(request, "Edit_Tabela.html", {"form": form, "Projects": projeto})
+
+def Delete_Tabela(request, id):
+    projeto = get_object_or_404(Tabela, id=id)
+    if request.method == "POST":
+        projeto.delete()
+        return redirect("Categories")
+    return render(request, "Delete_Tabela.html", {"Projects": projeto})

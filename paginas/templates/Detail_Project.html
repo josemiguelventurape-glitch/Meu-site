@@ -1,0 +1,12 @@
+{% extends "Base.html" %}
+
+{% block content %}
+<h1 class="Titulo">{{ Projects.Titulo }}</h1>
+<p class="Ano">Ano: {{ Projects.Ano }}</p>
+<p class="Estudio">Estúdio: {{ Projects.Estudio }}</p>
+<p class="Genero">Gênero: {{ Projects.Genero }}</p>
+<p class="IMDb">IMDb: {{ Projects.IMDb }}</p>
+<p class="Categoria">Categoria: {{ Projects.Categoria }}</p>
+
+<p><a href="{% url 'Categories' %}">Voltar</a></p>
+{% endblock %}

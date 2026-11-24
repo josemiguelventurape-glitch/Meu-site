@@ -20,12 +20,15 @@ from paginas import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.Wiki),
-    path('About/', views.About),
-    path('Contact/', views.Contact),
-    path('Project/', views.Project),
-    path('Categories/', views.Categories),
-    path('New_Tabela/', views.New_Tabela),
-    path('New_Categories/', views.New_Categories),
+    path('', views.Wiki, name="Wiki"),
+    path('About/', views.About, name="About"),
+    path('Contact/', views.Contact, name="Contact"),
+    path('Project/', views.Project, name="Project"),
+    path('Categories/', views.Categories, name="Categories"),
+    path('New_Tabela/', views.New_Tabela, name="New_Tabela"),
+    path('New_Categories/', views.New_Categories, name="New_Categories"),
+    path('Detail_Project/<int:id>/', views.Detail_Project, name="Detail_Project"),
+    path('Edit_Tabela/<int:id>/', views.Edit_Tabela, name="Edit_Tabela"),
+    path('Delete_Tabela/<int:id>/', views.Delete_Tabela, name="Delete_Tabela"),
 ]
 
