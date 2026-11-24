@@ -21,16 +21,10 @@ def Contact(request):
     return render(request, "Contact.html")
 
 def Project(request):
-    projetos = {
-         "Projetos": Tabela.objects.all(),
-    }
-    return render(request, "Project.html", projetos)
-
-def Categories(request):
     dados = {
         "Categories": Tabela.objects.select_related("Categoria").order_by("Categoria", "Titulo"),
     }
-    return render(request, "Categories.html", dados)
+    return render(request, "Project.html", dados)
 
 def New_Tabela(request):
     if request.method == "POST":

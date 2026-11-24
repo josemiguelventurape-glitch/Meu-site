@@ -24,7 +24,6 @@ urlpatterns = [
     path('About/', views.About, name="About"),
     path('Contact/', views.Contact, name="Contact"),
     path('Project/', views.Project, name="Project"),
-    path('Categories/', views.Categories, name="Categories"),
     path('New_Tabela/', views.New_Tabela, name="New_Tabela"),
     path('New_Categories/', views.New_Categories, name="New_Categories"),
     path('Detail_Project/<int:id>/', views.Detail_Project, name="Detail_Project"),
