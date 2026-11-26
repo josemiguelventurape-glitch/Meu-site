@@ -1,0 +1,21 @@
+{% extends "00_Base.html" %}
+
+{% block content %}
+  <h1>{{ game.titulo }}</h1>
+
+  {% if game.capa %}
+    <img class="capa-detalhe" src="{{ game.capa }}" alt="Capa de {{ game.titulo }}" referrerpolicy="no-referrer">
+  {% endif %}
+
+  <p>Ano: {{ game.ano }}</p>
+  <p>Estúdio: {{ game.estudio }}</p>
+  <p>Gênero: {{ game.genero }}</p>
+  <p>Status: {{ game.get_status_display }}</p>
+  <p>Console: {{ game.console|default:"Não informado" }}</p>
+
+  <p>
+    <a href="{% url 'Edit_Game' game.id %}">Editar</a> |
+    <a href="{% url 'Delete_Game' game.id %}">Excluir</a> |
+    <a href="{% url 'Games' %}">Voltar</a>
+  </p>
+{% endblock %}

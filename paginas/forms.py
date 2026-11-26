@@ -1,12 +1,14 @@
 from django import forms
-from .models import Tabela,Category
+from .models import Consoles, Games
 
-class TabelaForm(forms.ModelForm):
-    class Meta:
-        model = Tabela
-        fields = ['Titulo', 'Ano', 'Estudio', 'IMDb', 'Genero', 'Categoria']
 
-class CategoryForm(forms.ModelForm):
+class ConsolesForm(forms.ModelForm):
     class Meta:
-        model = Category
+        model = Consoles
         fields = ['nome']
+
+
+class GamesForm(forms.ModelForm):
+    class Meta:
+        model = Games
+        fields = ['titulo', 'ano', 'estudio', 'genero', 'status', 'console', 'capa']

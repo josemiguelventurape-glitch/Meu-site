@@ -1,0 +1,12 @@
+{% extends "00_Base.html" %}
+
+{% block content %}
+  <h1>Excluir jogo</h1>
+  <p>Tem certeza que quer excluir <strong>{{ game.titulo }}</strong>?</p>
+
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Sim, excluir</button>
+    <a href="{% url 'Games' %}">Cancelar</a>
+  </form>
+{% endblock %}

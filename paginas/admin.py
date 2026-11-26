@@ -1,12 +1,14 @@
 from django.contrib import admin
-
-from .models import Tabela, Category
-
-
-class TabelaAdmin(admin.ModelAdmin):
-    list_display = ('Titulo', 'Ano', 'Estudio', 'IMDb', 'Genero', 'Categoria')
+from .models import Consoles, Games
 
 
-admin.site.register(Category)
-admin.site.register(Tabela, TabelaAdmin)
+@admin.register(Consoles)
+class ConsolesAdmin(admin.ModelAdmin):
+    list_display = ['nome']
 
+
+@admin.register(Games)
+class GamesAdmin(admin.ModelAdmin):
+    list_display = ['titulo', 'ano', 'estudio', 'genero', 'console']
+    list_filter = ['console', 'genero']
+    search_fields = ['titulo', 'estudio']

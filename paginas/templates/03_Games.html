@@ -1,0 +1,83 @@
+{% extends "00_Base.html" %}
+
+{% block title %}Games — Listas de Jogos Zerados{% endblock %}
+
+{% block content %}
+  <h2>Games</h2>
+
+  <p>
+    <a href="{% url 'New_Console' %}">New Console</a><br>
+    <a href="{% url 'New_Game' %}">New Game</a>
+  </p>
+
+  <div class="resumo-stats">
+    <span>{{ total }} Total</span> |
+    <span>{{ total_zerados }} Zerados</span> |
+    <span>{{ total_nao_zerados }} Não zerados</span>
+  </div>
+
+  <form method="get" class="filtro-plataforma">
+    <label for="filtro-console">Console:</label>
+    <select name="console" id="filtro-console" onchange="this.form.submit()">
+      <option value="">Todos</option>
+      {% for c in consoles %}
+        <option value="{{ c.id }}" {% if console_selecionado == c.id|stringformat:"s" %}selected{% endif %}>
+          {{ c }}
+        </option>
+      {% endfor %}
+    </select>
+
+    <label for="filtro-status">Status:</label>
+    <select name="status" id="filtro-status" onchange="this.form.submit()">
+      <option value="">Todos</option>
+      <option value="zerado" {% if status_selecionado == "zerado" %}selected{% endif %}>Zerados</option>
+      <option value="nao_zerado" {% if status_selecionado == "nao_zerado" %}selected{% endif %}>Não zerados</option>
+    </select>
+  </form>
+
+  <ul class="lista-jogos">
+    {% for game in games %}
+      <li class="card">
+        <div class="jogo">
+          {% if game.capa %}
+            <img src="{{ game.capa }}" alt="{{ game.titulo }}">
+          {% else %}
+            <div class="sem-capa">Sem capa</div>
+          {% endif %}
+
+          <div class="info">
+            <div class="info-topo">
+              <h3><a href="{% url 'Detail_Game' game.id %}">{{ game.titulo }}</a></h3>
+
+              {% if game.status == "zerado" %}
+                <span class="badge-status zerado" title="Jogo zerado">✔ Zerado</span>
+              {% else %}
+                <span class="badge-status nao-zerado" title="Jogo não zerado">⏳ Não zerado</span>
+              {% endif %}
+            </div>
+
+            <p>
+              · Ano: {{ game.ano }} | Studio: {{ game.estudio }}<br>
+              · Gênero: {{ game.genero }} | Console: {{ game.console }}
+            </p>
+
+            <div class="info-rodape">
+              <p class="acoes">
+                <a href="{% url 'Edit_Game' game.id %}">Editar</a> |
+                <a href="{% url 'Delete_Game' game.id %}">Excluir</a>
+              </p>
+
+              {% if game.ordem_status %}
+                <span class="ordem-cadastro {{ game.status }}" title="Ordem de cadastro no grupo">
+                  {{ game.ordem_status|stringformat:"04d" }}
+                </span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </li>
+    {% empty %}
+      <li class="card">Nenhum jogo encontrado.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

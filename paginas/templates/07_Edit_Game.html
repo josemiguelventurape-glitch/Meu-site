@@ -1,0 +1,51 @@
+{% extends "00_Base.html" %}
+
+{% block content %}
+  <h2 class="centro">Editar: {{ game.titulo }}</h2>
+
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="form-layout">
+      <div class="preview">
+        <img id="preview-capa" src="{{ game.capa }}" alt="Prévia da capa"
+             referrerpolicy="no-referrer" {% if not game.capa %}hidden{% endif %}>
+        <p id="preview-aviso" hidden>Não foi possível carregar essa imagem. Use um link direto para o arquivo.</p>
+      </div>
+
+      <div class="campos">
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+      </div>
+    </div>
+  </form>
+
+  <p class="centro"><a href="{% url 'Games' %}">Cancelar</a></p>
+
+  <script>
+    const campo = document.getElementById("id_capa");
+    const img = document.getElementById("preview-capa");
+    const aviso = document.getElementById("preview-aviso");
+
+    function atualizar() {
+      const url = campo.value.trim();
+      aviso.hidden = true;
+      if (url) {
+        img.src = url;
+        img.hidden = false;
+      } else {
+        img.removeAttribute("src");
+        img.hidden = true;
+      }
+    }
+
+    img.addEventListener("error", function () {
+      if (campo.value.trim()) {
+        img.hidden = true;
+        aviso.hidden = false;
+      }
+    });
+
+    campo.addEventListener("input", atualizar);
+  </script>
+{% endblock %}
